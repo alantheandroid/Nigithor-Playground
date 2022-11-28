@@ -1,0 +1,51 @@
+<aura:component controller="AccountFormController">
+
+  <aura:attribute name="newAccount" type="Account" default="{ 'sobjectType': 'Account', 'Name': ''}" />
+
+  <lightning:layout class="slds-box slds-theme_default slds-var-m-around_medium">
+    <lightning:layoutItem flexibility="auto">
+      <!-- CREATE NEW ACCOUNT FORM -->
+      <form class="slds-form_stacked">
+
+        <lightning:layout>
+
+          <lightning:layoutItem flexibility="auto" padding="around-small">
+            <lightning:input label="First Name" aura:id="accountform" type="text" required="true" />
+
+            <lightning:input label="Last Name" aura:id="accountform" type="text" required="true"
+              value="{!v.newAccount.Name}" />
+
+            <lightning:input label="Company Name" aura:id="accountform" type="text"
+              placeholder="To compile only for business account" />
+
+            <lightning:input label="Fiscal Code" aura:id="accountform" type="text" />
+
+            <lightning:input label="VAT/ABN Number" aura:id="accountform" type="text" />
+
+            <lightning:input label="VAT UE" aura:id="accountform" type="text" />
+
+          </lightning:layoutItem>
+
+          <lightning:layoutItem flexibility="auto" padding="around-small">
+
+            <lightning:input label="Email" aura:id="accountform" type="email" />
+
+            <lightning:input label="Phone" aura:id="accountform" type="tel" />
+
+            <lightning:input label="Mobile" aura:id="accountform" type="tel" />
+
+            <lightning:inputAddress addressLabel="Address" countryLabel="Country" streetLabel="Street"
+              cityLabel="City/Suburb" provinceLabel="Shipping state/Province code" postalCodeLabel="Zip/Postal code" />
+
+            <lightning:button label="Create Account" class="slds-var-m-top_medium" variant="brand"
+              onclick="{!c.clickCreate}" />
+          </lightning:layoutItem>
+
+        </lightning:layout>
+
+      </form>
+      <!-- / CREATE NEW ACCOUNT FORM -->
+    </lightning:layoutItem>
+  </lightning:layout>
+
+</aura:component>

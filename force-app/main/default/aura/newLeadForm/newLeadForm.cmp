@@ -1,0 +1,46 @@
+<aura:component>
+
+  <aura:attribute name="newLead" type="Lead" default="{ 'sobjectType': 'Lead', 'FirstName': '', 'LastName': ''}" />
+
+  <lightning:layout class="slds-box slds-theme_default slds-var-m-around_medium">
+    <lightning:layoutItem flexibility="auto">
+      <!-- CREATE NEW ACCOUNT FORM -->
+      <form class="slds-form_stacked">
+
+        <lightning:layout>
+
+          <lightning:layoutItem flexibility="auto" padding="around-small">
+            <lightning:input label="First Name" aura:id="leadform" type="text" required="true"
+              value="{!v.newLead.FirstName}" />
+
+            <lightning:input label="Last Name" aura:id="leadform" type="text" required="true"
+              value="{!v.newLead.LastName}" />
+
+            <lightning:input label="Company Name" aura:id="leadform" type="text"
+              placeholder="To compile only for business account" />
+
+          </lightning:layoutItem>
+
+          <lightning:layoutItem flexibility="auto" padding="around-small">
+
+            <lightning:input label="Email" aura:id="leadform" type="email" />
+
+            <lightning:input label="Phone" aura:id="leadform" type="tel" />
+
+            <lightning:input label="Mobile" aura:id="leadform" type="tel" />
+
+            <lightning:inputAddress addressLabel="Address" countryLabel="Country" streetLabel="Street"
+              cityLabel="City/Suburb" provinceLabel="Shipping state/Province code" postalCodeLabel="Zip/Postal code" />
+
+            <lightning:button label="Create Lead" class="slds-var-m-top_medium" variant="brand"
+              onclick="{!c.clickCreate}" />
+          </lightning:layoutItem>
+
+        </lightning:layout>
+
+      </form>
+      <!-- / CREATE NEW ACCOUNT FORM -->
+    </lightning:layoutItem>
+  </lightning:layout>
+
+</aura:component>
