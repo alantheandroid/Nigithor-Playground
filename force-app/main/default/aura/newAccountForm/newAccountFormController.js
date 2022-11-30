@@ -5,7 +5,6 @@
             return validSoFar && inputCmp.get("v.validity").valid;
         }, true);
         if(validAccount) {
-
             let newAccount = component.get("v.newAccount");
             console.log(JSON.stringify(newAccount));
             helper.createAccount(component, newAccount);

@@ -1,0 +1,76 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride"
+  access="global">
+
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:attribute name="newAccount" type="Boolean" default="false" />
+  <aura:attribute name="newLead" type="Boolean" default="false" />
+
+  <!-- HEADER -->
+
+  <aura:if isTrue="{!v.newAccount}">
+
+    <lightning:layout class="slds-page-header slds-page-header_object-home">
+      <lightning:layoutItem>
+        <lightning:icon aura:id="formIcon" iconName="standard:account" alternativeText="New Account" />
+      </lightning:layoutItem>
+      <lightning:layoutItem padding="horizontal-small">
+        <div class="page-section page-header">
+          <h2 class="slds-text-heading_large">New Account</h2>
+        </div>
+      </lightning:layoutItem>
+    </lightning:layout>
+
+    <aura:set attribute="else">
+
+      <lightning:layout class="slds-page-header slds-page-header_object-home">
+        <lightning:layoutItem>
+          <lightning:icon aura:id="formIcon" iconName="standard:lead" alternativeText="New Account" />
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="horizontal-small">
+          <div class="page-section page-header">
+            <h2 class="slds-text-heading_large">New Lead</h2>
+          </div>
+        </lightning:layoutItem>
+      </lightning:layout>
+
+    </aura:set>
+
+  </aura:if>
+  <!-- /HEADER -->
+
+  <!-- BUTTON GROUP -->
+
+
+  <lightning:buttonGroup class=" slds-var-m-around_medium">
+    <aura:if isTrue="{!v.newLead}">
+      <lightning:button label="Lead" onclick="{!c.handleLeadClick}" variant="brand"></lightning:button>
+      <aura:set attribute="else">
+        <lightning:button label="Lead" onclick="{!c.handleLeadClick}"></lightning:button>
+      </aura:set>
+    </aura:if>
+
+    <aura:if isTrue="{!v.newAccount}">
+      <lightning:button label="Account" onclick="{!c.handleAccountClick}" variant="brand"></lightning:button>
+      <aura:set attribute="else">
+        <lightning:button label="Account" onclick="{!c.handleAccountClick}"></lightning:button>
+      </aura:set>
+    </aura:if>
+  </lightning:buttonGroup>
+
+  <!-- / BUTTON GROUP -->
+
+  <!-- NEW ACCOUNT FORM -->
+
+  <aura:if isTrue="{!v.newAccount}">
+    <c:newAccountForm />
+    <aura:set attribute="else">
+      <c:newLeadForm />
+    </aura:set>
+  </aura:if>
+
+  <!-- / NEW ACCOUNT FORM -->
+
+
+</aura:component>
